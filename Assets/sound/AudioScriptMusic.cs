@@ -15,7 +15,7 @@ public class AudioScriptMusic : MonoBehaviour
     {
         musicAudioSource = GetComponent<AudioSource>();
         musicAudioSource.clip = musicAudioClip;
-
+        musicAudioSource.loop = true;
         musicAudioSource.Play();
     }
 
