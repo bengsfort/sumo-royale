@@ -12,7 +12,7 @@ public class SelectionController : MonoBehaviour
     public GameObject p3Ui;
     public GameObject p4Ui;
 
-    private List<Player> players = new List<Player>();
+    // private List<Player> players = new List<Player>();
 
     // Start is called before the first frame update
     void Start()
@@ -44,8 +44,8 @@ public class SelectionController : MonoBehaviour
     {
         // Register Players
         if (Input.GetButtonDown("C1_A"))
-            if(isAssigned("C1"))
             {
+            //if (!isAssigned("C1"))
                 {
                     TextMeshProUGUI textMeshp1Ui = p1Ui.GetComponent<TextMeshProUGUI>();
                     textMeshp1Ui.SetText("P1");
@@ -58,8 +58,8 @@ public class SelectionController : MonoBehaviour
                     string playerId = "C1";
                     bool isAssigned = true;
 
-                    Player p1 = new Player(controllerId, playerId, aButton, xAxis, yAxis, isAssigned);
-                    players.Add(p1);
+                    // Player p1 = new Player(controllerId, playerId, aButton, xAxis, yAxis, isAssigned);
+                    // players.Add(p1);
 
                 }
             }
@@ -73,17 +73,7 @@ public class SelectionController : MonoBehaviour
 
 
     }
-    private bool isAssigned(string playerId)
-    {
-        foreach(Player player in players)
-        {
-            if(player.playerId == playerId)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
+
 }
 
 

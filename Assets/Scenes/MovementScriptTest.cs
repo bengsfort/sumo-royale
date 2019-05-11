@@ -14,6 +14,8 @@ public class MovementScriptTest : MonoBehaviour
     public float movementSpeed = 10;
     public float drag = 3;
 
+    public 
+
     /*public KeyCode forward;
     public KeyCode back;
     public KeyCode left;
