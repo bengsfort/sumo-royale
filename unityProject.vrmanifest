@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.curryroyale.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "C:\\Users\\Alter1\\Documents\\GitHub\\sumo-royale4\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "curry-royale [Testing]"
+        }
+      }
+    }
+  ]
+}
