@@ -60,7 +60,7 @@ public class MovementScriptTest : MonoBehaviour
         }
 
 
-        // Debug.Log(":" + cx + "," + cy);
+        Debug.Log(":" + cx + "," + cy);
 
         rb.AddForce(movementSpeed * Vector3.right * cx);
         rb.AddForce(movementSpeed * Vector3.back * cy);
