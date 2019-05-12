@@ -6,7 +6,7 @@ public class CollisionForce : MonoBehaviour
 {
     private Vector3 otherFood;
     private Vector3 angleToOtherFood;
-    public float collisionForce = 2;
+    public float collisionForce = 200;
 
     void OnCollisionEnter(Collision other)
     {
