@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 481146365681351862}
   - component: {fileID: 4007994959514036511}
   - component: {fileID: 9140494356718144001}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: onion
-  m_TagString: Untagged
+  m_TagString: food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,7 +49,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 3
+  m_CollisionDetection: 2
 --- !u!114 &4007994959514036511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,7 +75,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0818baf58252e04418715d96f05c5bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: 0
+  Cam: {fileID: 0}
+  PlayerID: 4
+  controller: 100
   soupLevel: 0.6
   movementSpeed: 25
   drag: 3
@@ -90,10 +92,10 @@ GameObject:
   - component: {fileID: 3950587335675772150}
   - component: {fileID: 4438751674398571287}
   - component: {fileID: 8232474358418417330}
-  - component: {fileID: 4910104626582884548}
-  m_Layer: 0
+  - component: {fileID: 1644342191553868003}
+  m_Layer: 8
   m_Name: onion
-  m_TagString: Untagged
+  m_TagString: food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,8 +161,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4910104626582884548
-MeshCollider:
+--- !u!135 &1644342191553868003
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -169,7 +171,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4711208715938537054, guid: ff8ed8d06535bb442b98d964906258ee, type: 3}
+  serializedVersion: 2
+  m_Radius: 0.008164629
+  m_Center: {x: 0, y: -0.0000000036658405, z: -0.0018148267}

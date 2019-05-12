@@ -6,15 +6,15 @@ public class MovementScriptTest : MonoBehaviour
 {
     static float CONTROLLER_EPSILON = 0.025f;
 
+    public Camera Cam;
 
+    public int PlayerID = -1;
     public int controller;
 
 
     public float soupLevel = 10;
     public float movementSpeed = 10;
     public float drag = 3;
-
-    public 
 
     /*public KeyCode forward;
     public KeyCode back;
@@ -24,48 +24,31 @@ public class MovementScriptTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (PlayerID >= 0)
+        {
+            var cameraScript = Cam.GetComponent<Main>();
+            Player player = cameraScript.Players.Find(p => p.ID == PlayerID);
+            if (player == null)
+            {
+                Debug.Log("Player ID " + PlayerID + " not found!");
+                return;
+            }
+            player.MovementScript = this;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
 
-
-
-
-
-
+        ControllerInputs inputs = getControllerInputs();
 
         Rigidbody rb = GetComponent<Rigidbody>();
 
-        float cx = 0.0f;
-        float cy = 0.0f;
-        if (controller < 100)
-        {
-            cx = Input.GetAxis("C" + controller + "_Left Stick X Axis");
-            cy = Input.GetAxis("C" + controller + "_Left Stick Y Axis");
-            if (Mathf.Abs(cx) < CONTROLLER_EPSILON) cx = 0.0f;
-            if (Mathf.Abs(cy) < CONTROLLER_EPSILON) cy = 0.0f;
-        } else if (controller == 100)
-        {
-            if (Input.GetKey(KeyCode.A)) cx -= 0.1f;
-            if (Input.GetKey(KeyCode.D)) cx += 0.1f;
-            if (Input.GetKey(KeyCode.W)) cy -= 0.1f;
-            if (Input.GetKey(KeyCode.S)) cy += 0.1f;
-        } else if (controller == 101)
-        {
-            if (Input.GetKey(KeyCode.LeftArrow)) cx -= 0.1f;
-            if (Input.GetKey(KeyCode.RightArrow)) cx += 0.1f;
-            if (Input.GetKey(KeyCode.UpArrow)) cy -= 0.1f;
-            if (Input.GetKey(KeyCode.DownArrow)) cy += 0.1f;
-        }
-
-
         // Debug.Log(":" + cx + "," + cy);
 
-        rb.AddForce(movementSpeed * Vector3.right * cx);
-        rb.AddForce(movementSpeed * Vector3.back * cy);
+        rb.AddForce(movementSpeed * Vector3.right * inputs.cx);
+        rb.AddForce(movementSpeed * Vector3.back * inputs.cy);
 
         //Temporary fix for throwing objects up in the air
         if (Input.GetKey(KeyCode.Space)) { rb.AddForce(Vector3.up * 100); }
@@ -106,6 +89,40 @@ public class MovementScriptTest : MonoBehaviour
         rb.AddForce(Vector3.right);*/
 
 
-        }
-
     }
+
+    private ControllerInputs getControllerInputs()
+    {
+        ControllerInputs res = new ControllerInputs();
+        if (controller < 100)
+        {
+            res.cx = Input.GetAxis("C" + controller + "_Left Stick X Axis");
+            res.cy = Input.GetAxis("C" + controller + "_Left Stick Y Axis");
+            if (Mathf.Abs(res.cx) < CONTROLLER_EPSILON) res.cx = 0.0f;
+            if (Mathf.Abs(res.cy) < CONTROLLER_EPSILON) res.cy = 0.0f;
+        }
+        else if (controller == 100)
+        {
+            if (Input.GetKey(KeyCode.A)) res.cx -= 0.1f;
+            if (Input.GetKey(KeyCode.D)) res.cx += 0.1f;
+            if (Input.GetKey(KeyCode.W)) res.cy -= 0.1f;
+            if (Input.GetKey(KeyCode.S)) res.cy += 0.1f;
+        }
+        else if (controller == 101)
+        {
+            if (Input.GetKey(KeyCode.LeftArrow)) res.cx -= 0.1f;
+            if (Input.GetKey(KeyCode.RightArrow)) res.cx += 0.1f;
+            if (Input.GetKey(KeyCode.UpArrow)) res.cy -= 0.1f;
+            if (Input.GetKey(KeyCode.DownArrow)) res.cy += 0.1f;
+        }
+        return res;
+    }
+
+    private class ControllerInputs
+    {
+        public float cx { get; set; }
+        public float cy { get; set; }
+        public bool A { get; set; }
+    }
+
+}
